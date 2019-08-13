@@ -10,6 +10,11 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.prototype.$moment = moment;
 
+import {getList} from '@/assets/api/demo.js' 
+getList().then(res=>{
+  
+})
+
 new Vue({
   router,
   store,

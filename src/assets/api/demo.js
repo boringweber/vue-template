@@ -1,9 +1,9 @@
 // demo模块
-import request from '@/utils/request'
+import request from '@/assets/utils/request'
 
 function getList(params) {
     return request({
-        url: '/offdataList',
+        url: '/getTitle',
         method: 'get',
         params
     })

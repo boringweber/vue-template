@@ -17,7 +17,7 @@ const service = axios.create({
 })
 // service.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 // service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-service.defaults.headers.common['token'] = process.env.VUE_APP_BASE_URL_TOKEN;
+// service.defaults.headers.common['token'] = process.env.VUE_APP_BASE_URL_TOKEN;
 
 service.defaults.transformRequest = [function (data) {
     let ret = ''
@@ -27,50 +27,40 @@ service.defaults.transformRequest = [function (data) {
     return ret
     // return qs.stringify(data)
 }]
-// request interceptor
+
 service.interceptors.request.use(
     config => {
-        console.log('请求参数：', config)
+        console.log(`${config.url}请求参数：`, config)
         return config
     },
     error => {
         NProgress.done();
-        console.error('请求参数错误：', error) // for debug
+        console.error('请求参数错误：', error)
         return Promise.reject(error)
     }
 )
 
-// response interceptor
 service.interceptors.response.use(
-    /**
-     * If you want to get http information such as headers or status
-     * Please return  response => response
-     */
-
-    /**
-     * Determine the request status by custom code
-     * Here is just an example
-     * You can also judge the status by HTTP Status Code
-     */
     response => {
-        console.log('返回数据：', response)
-        const res = response.data
-        if (res.code !== 200) {
-            Message({
-                message: res.msg || '错误',
-                type: 'error',
-                duration: 5 * 1000
-            })
-            NProgress.done();
-            console.error('请求错误：', res)
-            return Promise.reject(new Error(res.msg || '错误'))
-        } else {
-            return res
-        }
+        console.log(`${response.config.url.split(response.config.baseURL)[1]}返回数据：`, response)
+        // const res = response.data
+        // if (res.code !== 200) {
+        //     Message({
+        //         message: res.msg || '错误',
+        //         type: 'error',
+        //         duration: 5 * 1000
+        //     })
+        //     NProgress.done();
+        //     console.error('请求错误：', res)
+        //     return Promise.reject(new Error(res.msg || '错误'))
+        // } else {
+        //     return res
+        // }
+        return response.data;
     },
     error => {
         NProgress.done();
-        console.error('返回错误信息：' + error) // for debug
+        console.error('返回错误信息：' + error)
         Message({
             message: error.message,
             type: 'error',
