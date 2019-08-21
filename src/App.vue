@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <h3>vue 基础架构模板</h3>
-    <!-- <router-view/> -->
+    <router-view/>
   </div>
 </template>
 
@@ -12,5 +11,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-top: 100px;
 }
 </style>

@@ -19,5 +19,11 @@ src/assets/style/reset.scss 重置样式代码
 
 src/assets/style/variable.scss 全局样式变量
 
+#特性
+添加404、login界面；
+添加路由权限控制；
+
+
+
 
 
