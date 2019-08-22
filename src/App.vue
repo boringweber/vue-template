@@ -1,9 +1,23 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
+    <loading v-show="isShowLoading"></loading>
   </div>
 </template>
-
+<script>
+import loading from "@/components/loading.vue";
+export default {
+  name: "app",
+  components: {
+    loading
+  },
+  computed: {
+    isShowLoading() {
+      return  this.$store.state.common.isShowLoading;
+    }
+  }
+};
+</script>
 <style lang="scss">
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

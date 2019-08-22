@@ -22,6 +22,9 @@ src/assets/style/variable.scss 全局样式变量
 #特性
 添加404、login界面；
 添加路由权限控制；
+支持nprogress加载动画；
+支持自定义加载动画：src/components/loading.vue
+
 
 
 
